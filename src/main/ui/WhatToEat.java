@@ -1,10 +1,7 @@
 package ui;
 
-import model.Category;
 import model.Event;
-import model.EventLog;
-import model.FavoriteRestaurant;
-import model.RestaurantList;
+import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -70,7 +67,6 @@ public class WhatToEat extends JPanel implements ListSelectionListener {
     }
 
 
-
     // MODIFIES: this
     // EFFECTS: instantiate all the list related component
     public void instantiateList() {
@@ -79,11 +75,11 @@ public class WhatToEat extends JPanel implements ListSelectionListener {
         list = new JList(restaurantListModel);
         listScrollPane = new JScrollPane(list);
 
-        FavoriteRestaurant restaurant = new FavoriteRestaurant("Ryuu",Category.MyFavorite);
+        FavoriteRestaurant restaurant = new FavoriteRestaurant("Ryuu", Category.MyFavorite);
         restaurantListModel.addElement(restaurant);
         restaurantList.addRestaurant(restaurant);
 
-        list.setFont(new Font("Calibri",Font.PLAIN,16));
+        list.setFont(new Font("Calibri", Font.PLAIN, 16));
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setSelectedIndex(0);
         list.addListSelectionListener(this);
@@ -125,7 +121,7 @@ public class WhatToEat extends JPanel implements ListSelectionListener {
     // MODIFIES: this
     // EFFECTS: instantiate ComboBox
     public void instantiateComboBox() {
-        Category[] category = {Category.MyFavorite,Category.WantToTry};
+        Category[] category = {Category.MyFavorite, Category.WantToTry};
         categoryList = new JComboBox(category);
         categoryList.setSelectedIndex(1);
     }
@@ -255,7 +251,7 @@ public class WhatToEat extends JPanel implements ListSelectionListener {
             int index = list.getSelectedIndex();
             restaurantListModel.remove(index);
             restaurantList.removeRestaurant(restaurantList.getRestaurants().get(index));
-                    //getRestaurants().remove(index);
+            //getRestaurants().remove(index);
 
             int size = restaurantListModel.getSize();
 
@@ -294,7 +290,7 @@ public class WhatToEat extends JPanel implements ListSelectionListener {
         // EFFECTS: set the random choose pop up window and the picture display
         public void actionPerformed(ActionEvent e) {
             JFrame frame = new JFrame("Random Choose");
-            frame.setMinimumSize(new Dimension(200,200));
+            frame.setMinimumSize(new Dimension(200, 200));
 
             JPanel panel = new JPanel();
             Random random = new Random();
@@ -313,7 +309,7 @@ public class WhatToEat extends JPanel implements ListSelectionListener {
                 ImageIcon imageIcon = new ImageIcon(bufferedImage);
                 picture = new JLabel();
                 picture.setIcon(imageIcon);
-                picture.setSize(new Dimension(100,100));
+                picture.setSize(new Dimension(100, 100));
 
             } catch (IOException ex) {
                 //
@@ -333,7 +329,7 @@ public class WhatToEat extends JPanel implements ListSelectionListener {
             jsonReader = new JsonReader(JSON_STORE);
             try {
                 RestaurantList loadRestaurantList = jsonReader.read();
-                for (FavoriteRestaurant next: loadRestaurantList.getRestaurants()) {
+                for (FavoriteRestaurant next : loadRestaurantList.getRestaurants()) {
                     restaurantList.addRestaurant(next);
                     restaurantListModel.addElement(next.getCategory() + ": " + next.getName());
                 }
@@ -366,7 +362,7 @@ public class WhatToEat extends JPanel implements ListSelectionListener {
     //          print the eventLog when window close
     public static void createAndShowGUI() {
         JFrame frame = new JFrame("What To Eat");
-        frame.setMinimumSize(new Dimension(WIDTH,HEIGHT));
+        frame.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JComponent newContentPane = new WhatToEat();
@@ -378,13 +374,12 @@ public class WhatToEat extends JPanel implements ListSelectionListener {
 
         frame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                for (Event event: EventLog.getInstance()) {
+                for (Event event : EventLog.getInstance()) {
                     System.out.println(event.toString());
                 }
             }
         });
     }
-
 
 
     // EFFECTS: run the application
@@ -395,7 +390,7 @@ public class WhatToEat extends JPanel implements ListSelectionListener {
             public void run() {
                 createAndShowGUI();
             }
-            });
+        });
     }
 
 

@@ -26,11 +26,6 @@ what to eat. I hope this application can help me save time, and help anyone who 
 * As a user, I want to be able to save my restaurant list to file
 * As a user, I want to be able to load my restaurant list from file
 
-**- Phase 4: Task 3** <br>
-To refactor my project, I will implement the observer pattern. When I did the GUI, I use a restaurantList to track all
-the restaurants in restaurantListModel for JsonWriter and JsonReader. For the observer pattern, I will make
-restaurantListModel extends observable, and restaurantList implement observers. When anything happens in the GUI window
-and restaurantListModel changes, the restaurantList will get notified and updated, so that I do not need to use code to
-perform that manually. 
+
 
 

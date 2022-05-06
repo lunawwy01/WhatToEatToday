@@ -4,7 +4,7 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
-// Represents a restaurant having a name
+// Represents a restaurant with name and category
 
 public class FavoriteRestaurant implements Writable {
     private String name;
@@ -32,7 +32,7 @@ public class FavoriteRestaurant implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("category",category);
+        json.put("category", category);
         return json;
     }
 
