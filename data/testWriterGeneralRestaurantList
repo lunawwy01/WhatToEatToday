@@ -1,0 +1,13 @@
+{
+    "restaurants": [
+        {
+            "name": "Nori",
+            "category": "MyFavorite"
+        },
+        {
+            "name": "Kinto",
+            "category": "WantToTry"
+        }
+    ],
+    "title": "My Restaurant List"
+}

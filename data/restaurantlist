@@ -1,0 +1,13 @@
+{
+    "restaurants": [
+        {
+            "name": "Ryuu",
+            "category": "MyFavorite"
+        },
+        {
+            "name": "Kosoo",
+            "category": "WantToTry"
+        }
+    ],
+    "title": "My List"
+}
